@@ -3,7 +3,7 @@ class Database:
         # TODO
         pass
 
-    def new_item(self,name,content):
+    def new_item(self,name,content,autor):
         # TODO
         pass
 
@@ -19,7 +19,7 @@ class Database:
         # TODO
         pass
 
-    def update_item(id,name,content):
+    def update_item(id,name,content,autor):
         #TODO
         pass
     
