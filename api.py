@@ -26,7 +26,7 @@ def new_item():
         content = json_body['content']
         autor = json_body['autor']
     except KeyError:
-        return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
+        return response_f({'Message':ApiErrors.DataError(['name', 'content','autor'])},400)
     try:
         Database.new_item(name,content,autor)
     except DBError as e:
@@ -65,7 +65,7 @@ def update_item(id):
         content = json_body['content']
         autor = json_body['autor']
     except KeyError:
-        return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
+        return response_f({'Message':ApiErrors.DataError(['name', 'content','autor'])},400)
     try:
         Database.update_item(id,name,content,autor)
     except DBError as e:
