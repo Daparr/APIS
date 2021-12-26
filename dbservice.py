@@ -7,19 +7,19 @@ class Database:
         # TODO
         pass
 
-    def get_items(self):
+    def get_items():
         # TODO
         pass
 
-    def get_item(self, id):
+    def get_item(id):
         # TODO
         pass
 
-    def del_item(self, id):
+    def del_item(id):
         # TODO
         pass
 
-    def update_item(self, id,name,content):
+    def update_item(id,name,content):
         #TODO
         pass
     

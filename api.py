@@ -13,7 +13,7 @@ class ApiErrors:
     def __init__(self) -> None:
         pass
     @staticmethod
-    def DataError(**args):
+    def DataError(args):
         return 'Data not provided' + " ".join(args)
 
 app = Flask(__name__)
@@ -24,10 +24,11 @@ def new_item():
     try:
         name = json_body['name']
         content = json_body['content']
+        autor = json_body['autor']
     except KeyError:
         return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
-        Database.new_item(name,content)
+        Database.new_item(name,content,autor)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
@@ -62,10 +63,11 @@ def update_item(id):
     try:
         name = json_body['name']
         content = json_body['content']
+        autor = json_body['autor']
     except KeyError:
         return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
-        Database.update_item(id,name,content)
+        Database.update_item(id,name,content,autor)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
