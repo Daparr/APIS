@@ -28,6 +28,6 @@ export const updateArticle = async (article: Article): Promise<void> => {
   })
 }
 
-export const deleteArticle = async (articleId: hash): Promise<void> => {
+export const deleteArticle = async (articleId: string): Promise<void> => {
   await fetch(`${SERVER}/item/${articleId}`, { method: 'DELETE' })
 }
