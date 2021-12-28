@@ -40,3 +40,5 @@ class Database:
             'author': author
         }
         self.records.update_one({'_id': ObjectId(item_id)}, {'$set': update})
+    class DBError:
+        pass
