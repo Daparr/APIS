@@ -1,6 +1,7 @@
 from typing import Type
 from flask import Flask, request, json, session, Response
 from dbservice import Database, DBError
+from flask_cors import CORS
 
 def response_f(response, status):
 	return Response(
@@ -17,7 +18,7 @@ class ApiErrors:
         return 'Data not provided' + " ".join(args)
 
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/items/new', methods=['POST'])
 def new_item():
     json_body = request.get_json()
@@ -26,7 +27,7 @@ def new_item():
         content = json_body['content']
         autor = json_body['autor']
     except KeyError:
-        return response_f({'Message':ApiErrors.DataError(['name', 'content','autor'])},400)
+        return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
         Database.new_item(name,content,autor)
     except DBError as e:
@@ -65,7 +66,7 @@ def update_item(id):
         content = json_body['content']
         autor = json_body['autor']
     except KeyError:
-        return response_f({'Message':ApiErrors.DataError(['name', 'content','autor'])},400)
+        return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
         Database.update_item(id,name,content,autor)
     except DBError as e:
