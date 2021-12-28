@@ -29,7 +29,7 @@ def new_item():
     except KeyError:
         return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
-        Database.new_item(name,content,autor)
+        Database.new_item(Database(),name,content,autor)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
@@ -37,7 +37,7 @@ def new_item():
 @app.route('/items', methods=['GET'])
 def get_items():
     try:
-        items = Database.get_items()
+        items = Database.get_items(Database())
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f(items, 200)
@@ -45,7 +45,7 @@ def get_items():
 @app.route('/item/<id>', methods=['GET'])
 def get_item(id):
     try:
-        item = Database.get_item(id)
+        item = Database.get_item(Database(),id)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f(item, 200)
@@ -53,7 +53,7 @@ def get_item(id):
 @app.route('/item/<id>', methods=['DELETE'])
 def del_item(id):
     try:
-        Database.del_item(id)
+        Database.del_item(Database(),id)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
@@ -68,7 +68,7 @@ def update_item(id):
     except KeyError:
         return response_f({'Message':ApiErrors.DataError(['name', 'content'])},400)
     try:
-        Database.update_item(id,name,content,autor)
+        Database.update_item(Database(),id,name,content,autor)
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
