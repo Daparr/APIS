@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import certifi
+import json
 
 class Database:
     def __init__(self):
@@ -21,6 +22,7 @@ class Database:
 
     def get_items(self):
         items_list = list(self.records.find({}))
+        items_list = json.dumps(items_list)
         return items_list
 
     def get_item(self, item_id):
