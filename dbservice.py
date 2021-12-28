@@ -9,7 +9,7 @@ class Database:
             'mongodb+srv://admin:APISapis1@cluster0.6nrqq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
             tlsCAFile=certifi.where())
         self.db = self.client.get_database('news_db')
-        self.records = self.db.news_dbz
+        self.records = self.db.news_db
 
     def new_item(self, name, content, author):
         new_article = {
