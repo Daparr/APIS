@@ -72,3 +72,6 @@ def update_item(id):
     except DBError as e:
         return response_f({'Message':e}, 400)
     return response_f({'Message': 'Success'}, 200)
+
+if __name__ == '__main__':
+    app.run()
