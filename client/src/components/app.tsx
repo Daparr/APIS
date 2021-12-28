@@ -7,12 +7,12 @@ import { Navigation } from '.'
 export const App = () => (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
-      <Box ml="72">
-        <Navigation />
+      <Box ml="0">
+        {/* <Navigation /> */}
         <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="articles" element={<ArticlesPage />} />
-          <Route path="authors" element={<AuthorsPage />} />
+          <Route index element={<ArticlesPage />} />
+          {/* <Route path="articles" element={<ArticlesPage />} />
+          <Route path="authors" element={<AuthorsPage />} /> */}
         </Routes>
       </Box>
     </BrowserRouter>

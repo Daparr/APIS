@@ -3,31 +3,31 @@ import { Author } from '../types'
 
 const SERVER: string = 'https://garden-warehouse-api.herokuapp.com'
 
-export const getAllItems = async (): Promise<Author[]> => {
-  const res = await fetch(`${SERVER}/items`)
+export const getAllAuthors = async (): Promise<Author[]> => {
+  const res = await fetch(`${SERVER}/authors`)
   const data = await res.json()
   return data as Author[]
 }
 
-export const createItem = async (item: Author): Promise<void> => {
+export const createAuthor = async (item: Author): Promise<void> => {
   const data: any = { title: item.name }
-  await fetch(`${SERVER}/items`, {
+  await fetch(`${SERVER}/authors`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
 }
 
-export const updateItem = async (item: Author): Promise<void> => {
+export const updateAuthor = async (item: Author): Promise<void> => {
   const { id, name } = item
   const data: any = { name }
-  await fetch(`${SERVER}/items/${id}`, {
+  await fetch(`${SERVER}/authors/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
 }
 
-export const deleteItem = async (itemId: number): Promise<void> => {
-  await fetch(`${SERVER}/items/${itemId}`, { method: 'DELETE' })
+export const deleteAuthor = async (itemId: number): Promise<void> => {
+  await fetch(`${SERVER}/authors/${itemId}`, { method: 'DELETE' })
 }

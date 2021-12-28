@@ -21,7 +21,7 @@ interface Props {
   onSave: (client: Article) => void
 }
 
-const _empty: Article = { id: 0, article_name: '', text: '', author: '' }
+const _empty: Article = { id: 0, name: '', content: '', autor: '' }
 
 export const EditArticleForm = (props: Props) => {
   const { client, onClose, onSave } = props
@@ -44,20 +44,20 @@ export const EditArticleForm = (props: Props) => {
             <FormLabel>Article name</FormLabel>
             <Input
               placeholder="Article name"
-              value={form.article_name}
-              onChange={(event) => setForm({ ...form, article_name: event.target.value })}
+              value={form.name}
+              onChange={(event) => setForm({ ...form, name: event.target.value })}
             />
             <FormLabel>Text</FormLabel>
             <Input
               placeholder="Text"
-              value={form.text}
-              onChange={(event) => setForm({ ...form, text: event.target.value })}
+              value={form.content}
+              onChange={(event) => setForm({ ...form, content: event.target.value })}
             />
             <FormLabel>Author</FormLabel>
             <Input
               placeholder="Author"
-              value={form.author}
-              onChange={(event) => setForm({ ...form, author: event.target.value })}
+              value={form.autor}
+              onChange={(event) => setForm({ ...form, autor: event.target.value })}
             />
           </FormControl>
         </ModalBody>

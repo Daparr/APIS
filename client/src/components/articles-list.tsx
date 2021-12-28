@@ -74,15 +74,15 @@ const ClientItem = (props: ItemProps) => {
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}>
-            {client.article_name}
+            {client.name}
           </Heading>
           <Text color={'gray.500'}>
-          {client.text}
+          {client.content}
           </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>{client.author}</Text>
+            <Text fontWeight={600}>{client.autor}</Text>
             <HStack spacing="0" justifyContent="flex-end">
         <IconButton variant="ghost" aria-label="" icon={<BiTrash />} onClick={() => onClickDelete(client.id)} />
         <IconButton onClick={() => onClickEdit(client)} variant="ghost" aria-label="" icon={<BiDotsVerticalRounded />} />

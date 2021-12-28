@@ -6,7 +6,7 @@ import { Container, ArticleList, EditArticleForm } from '../components'
 import { createArticle } from '../services'
 import { Article } from '../types'
 
-const _empty: Article = { id: 0, article_name: '', text: '', author: '' }
+const _empty: Article = { id: 0, name: '', content: '', autor: '' }
 
 export const ArticlesPage = () => {
   const [create, setCreate] = useState<Article | undefined>()

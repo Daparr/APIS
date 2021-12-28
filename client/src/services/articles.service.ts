@@ -1,33 +1,33 @@
 import { Article } from '../types'
 //import { articles } from '../mock'
 
-const SERVER: string = 'https://apis-db.herokuapp.com/'
+const SERVER: string = 'https://apis-db.herokuapp.com'
 
-export const getAllClients = async (): Promise<Article[]> => {
-  const res = await fetch(`${SERVER}/clients`)
+export const getAllArticles = async (): Promise<Article[]> => {
+  const res = await fetch(`${SERVER}/items`)
   const data = await res.json()
   return data as Article[]
 }
 
-export const createClient = async (client: Article): Promise<void> => {
-  const data: any = { full_name: client.article_name }
-  await fetch(`${SERVER}/clients`, {
+export const createArticle = async (article: Article): Promise<void> => {
+  const data: any = { name: article.name, content: article.content, autor: article.autor}
+  await fetch(`${SERVER}/items/new`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
 }
 
-export const updateClient = async (client: Article): Promise<void> => {
-  const { id, article_name } = client
-  const data: any = { article_name }
-  await fetch(`${SERVER}/clients/${id}`, {
+export const updateArticle = async (article: Article): Promise<void> => {
+  const { id } = article
+  const data: any = { name: article.name, content: article.content, autor: article.autor}
+  await fetch(`${SERVER}/item/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
 }
 
-export const deleteClient = async (clientId: number): Promise<void> => {
-  await fetch(`${SERVER}/clients/${clientId}`, { method: 'DELETE' })
+export const deleteArticle = async (articleId: number): Promise<void> => {
+  await fetch(`${SERVER}/item/${articleId}`, { method: 'DELETE' })
 }
