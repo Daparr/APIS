@@ -4,6 +4,7 @@ import certifi
 import json
 
 class Database:
+
     def __init__(self):
 
         self.client = MongoClient(
@@ -20,10 +21,17 @@ class Database:
         }
         self.records.insert_one(new_article)
 
+
+
     def get_items(self):
+        def tranform(item):
+            item['_id'] = str(item['_id'])
+            return item
+
         items_list = list(self.records.find({}))
-        items_list = json.dumps(items_list)
+        items_list = list(map(lambda item: tranform(item), items_list))
         return items_list
+
 
     def get_item(self, item_id):
         item = self.records.find_one({'_id': ObjectId(item_id)})
@@ -42,5 +50,8 @@ class Database:
             'author': author
         }
         self.records.update_one({'_id': ObjectId(item_id)}, {'$set': update})
+
+
 class DBError:
+
     pass
