@@ -46,7 +46,7 @@ const Empty = () => {
 interface ItemProps {
   client: Article
   onClickEdit: (client: Article) => void
-  onClickDelete: (clientId: number) => void
+  onClickDelete: (clientId: string) => void
 }
 
 const ClientItem = (props: ItemProps) => {
@@ -113,7 +113,7 @@ export const ArticleList = () => {
     updateList()
   }
 
-  const onDelete = async (clientId: number) => {
+  const onDelete = async (clientId: string) => {
     await deleteArticle(clientId)
     updateList()
   }
