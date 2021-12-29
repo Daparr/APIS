@@ -21,7 +21,7 @@ interface Props {
   onSave: (client: Article) => void
 }
 
-const _empty: Article = { id: '', name: '', content: '', autor: '' }
+const _empty: Article = {id: '', name: '', content: '', autor: '' }
 
 export const EditArticleForm = (props: Props) => {
   const { client, onClose, onSave } = props
