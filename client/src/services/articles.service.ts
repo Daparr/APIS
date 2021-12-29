@@ -1,33 +1,36 @@
+import { Box, Heading, HStack, Button } from '@chakra-ui/react'
+import { useState } from 'react'
+import { BiPlus } from 'react-icons/bi'
+
+import { Container, ArticleList, EditArticleForm } from '../components'
+import { createArticle } from '../services'
 import { Article } from '../types'
-//import { articles } from '../mock'
 
-const SERVER: string = 'https://apis-db.herokuapp.com'
+const _empty: Article = { id: '', name: '', content: '', autor: '' }
 
-export const getAllArticles = async (): Promise<Article[]> => {
-  const res = await fetch(`${SERVER}/items`)
-  const data = await res.json()
-  return data as Article[]
-}
+export const ArticlesPage = () => {
+  const [create, setCreate] = useState<Article | undefined>()
 
-export const createArticle = async (article: Article): Promise<void> => {
-  const data: any = { name: article.name, content: article.content, autor: article.autor}
-  await fetch(`${SERVER}/items/new`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-}
+  const onSave = async (article: Article) => {
+    await createArticle(article)
+    setCreate(undefined)
+  }
 
-export const updateArticle = async (article: Article): Promise<void> => {
-  const { id } = article
-  const data: any = { name: article.name, content: article.content, autor: article.autor}
-  await fetch(`${SERVER}/item/${id}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-}
+  return (
+    <Box my="12">
+      <Container>
+        <HStack>
+          <Heading>Articles</Heading>
+          <Button colorScheme="blue" size="sm" variant="ghost" leftIcon={<BiPlus />} onClick={() => setCreate(_empty)}>
+            Add new
+          </Button>
+        </HStack>
 
-export const deleteArticle = async (articleId: string): Promise<void> => {
-  await fetch(`${SERVER}/item/${articleId}`, { method: 'DELETE' })
+        <Box mt="12">
+          <ArticleList />
+        </Box>
+      </Container>
+      <EditArticleForm client={create} onClose={() => setCreate(undefined)} onSave={onSave} />
+    </Box>
+  )
 }
