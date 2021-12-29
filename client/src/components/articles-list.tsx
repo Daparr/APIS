@@ -87,7 +87,7 @@ const ClientItem = (props: ItemProps) => {
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>{client.autor}</Text>
             <HStack spacing="0" justifyContent="flex-end">
-        <IconButton variant="ghost" aria-label="" icon={<BiTrash />} onClick={() => onClickDelete(client.id)} />
+        <IconButton variant="ghost" aria-label="" icon={<BiTrash />} onClick={() => onClickDelete(client._id)} />
         <IconButton onClick={() => onClickEdit(client)} variant="ghost" aria-label="" icon={<BiDotsVerticalRounded />} />
       </HStack>
           </Stack>
@@ -131,7 +131,7 @@ export const ArticleList = () => {
           clients.map((client) => (
             <ClientItem
               onClickEdit={(client) => setEdit(client)}
-              key={client.id}
+              key={client._id}
               client={client}
               onClickDelete={onDelete}
             />
