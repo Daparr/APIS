@@ -80,15 +80,13 @@ const ClientItem = (props: ItemProps) => {
           {client.content}
           </Text>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>{client.autor}</Text>
-            <HStack spacing="0" justifyContent="flex-end">
+        <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+          <Text fontWeight={600}>{client.autor}</Text>
+        </Stack>
+      <HStack spacing="0" justifyContent="flex-end">
         <IconButton variant="ghost" aria-label="" icon={<BiTrash />} onClick={() => onClickDelete(client._id)} />
         <IconButton onClick={() => onClickEdit(client)} variant="ghost" aria-label="" icon={<BiDotsVerticalRounded />} />
       </HStack>
-          </Stack>
-        </Stack>
       </Box>
     </Center>
   );
