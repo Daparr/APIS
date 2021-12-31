@@ -23,9 +23,6 @@ import { deleteArticle, getAllArticles, updateArticle } from '../services'
 import { Article } from '../types'
 import { EditArticleForm } from '.'
 
-import { Schema, Types } from 'mongoose';
-
-
 const Loading = () => {
   return (
     <>
