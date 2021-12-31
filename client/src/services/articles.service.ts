@@ -1,6 +1,5 @@
 import { Article } from '../types'
 //import { articles } from '../mock'
-import { Schema, Types } from 'mongoose';
 
 const SERVER: string = 'https://apis-db.herokuapp.com'
 
