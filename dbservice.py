@@ -17,7 +17,7 @@ class Database:
         new_article = {
             'name': name,
             'content': content,
-            'author': author
+            'autor': author
         }
         self.records.insert_one(new_article)
 
@@ -47,7 +47,7 @@ class Database:
         update = {
             'name': name,
             'content': content,
-            'author': author
+            'autor': author
         }
         self.records.update_one({'_id': ObjectId(item_id)}, {'$set': update})
 
